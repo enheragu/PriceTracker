@@ -1,0 +1,52 @@
+ntfy_topic: null
+
+# Threshold is price per box, if there are more boxes in the price
+# make use of price_mult
+products: 
+  - name: "Lili's Kitchen"
+    threshold: 6.0 
+    sites:
+      - name: "Petness"
+        url: 'https://petness.es/gatos/lilys-kitchen/multipack-seleccion-pate-suave'
+        tag: 'span'
+        class: 'variation-price'
+
+      - name: "Zooplus"
+        url: 'https://www.zooplus.es/shop/tienda_gatos/comida_humeda/lilys_kitchen/2128065?variantId=2128065.0&abd=true&activeVariant=2128065.0'
+        tag: 'span'
+        class: 'z-price__amount'
+
+      # In Amazon, prices are for 4 boxes
+      - name: "Amazon"
+        url: 'https://amzn.eu/d/jbZdlqH'
+        tag: 'span'
+        integer_class: 'a-price-whole'
+        decimal_class: 'a-price-fraction'
+        price_div: 4 # There are four boxes
+
+      - name: "Kiwoko"
+        url: 'https://www.kiwoko.com/gatos/comida-para-gatos/comida-humeda-para-gatos/multipacks-humedo/lily_s-kitchen-feline-smooth-selection-pate-tarrinas-para-gatos/LILCCMP01_M.html'
+        json_request: 'https://www.kiwoko.com/on/demandware.store/Sites-KiwokoES-Site/default/Product-Variation?dwvar_LILCCMP01__M_KI_Peso=48%20tarrinas%20x%2085%20g&amp;pid=LILCCMP01_M&amp;quantity=1'
+        json_path: ["product", "price", "sales", "value"]
+        price_div: 6 # There are six boxes
+
+      - name: "Tiendanimal"
+        url: 'https://www.tiendanimal.es/24-tarrinas-x-85-g-lilys-kitchen-feline-smooth-selection-pate-tarrinas-%C2%A1pack-ahorro/LILCCMP01_P3_B24.html'
+        json_request: 'https://www.tiendanimal.es/on/demandware.store/Sites-TiendanimalES-Site/default/Product-Variation?dwvar_LILCCMP01__M_KI_Peso=48%20tarrinas%20x%2085%20g&amp;pid=LILCCMP01_M&amp;quantity=1"'
+        json_path: ["product", "price", "sales", "value"]
+        price_div: 6
+
+  - name: "CatXtreme"
+    threshold: 0.8
+    sites:
+      - name: "Kiwoko"
+        url: 'https://www.kiwoko.com/gatos/comida-para-gatos/comida-humeda-para-gatos/catxtreme-kitten-pollo-lata-para-gatos/CTX40053_M.html'
+        json_request: 'https://www.kiwoko.com/on/demandware.store/Sites-KiwokoES-Site/default/Product-Variation?dwvar_CTX40053__M_KI_Peso=24%20latas%20x%20170%20g&amp;pid=CTX40053_M&amp;quantity=1'
+        json_path: ["product", "price", "sales", "value"]
+        price_div: 24 # There are six boxes
+
+      - name: "Tiendanimal"
+        url: 'https://www.tiendanimal.es/catxtreme-sterilised-salmon-en-pate-lata-para-gatos/CTX40056_M.html'
+        json_request: 'https://www.tiendanimal.es/on/demandware.store/Sites-TiendanimalES-Site/default/Product-Variation?dwvar_CTX40056__M_KI_Peso=24%20latas%20x%20170%20g&amp;pid=CTX40056_M&amp;quantity=1'
+        json_path: ["product", "price", "sales", "value"]
+        price_div: 24
